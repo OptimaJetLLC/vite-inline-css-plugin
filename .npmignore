@@ -3,6 +3,7 @@
 .gitattributes
 .github/ISSUE_TEMPLATE/bug_report.yml
 .github/ISSUE_TEMPLATE/config.yml
+.github/workflows/publish.yml
 .nvmrc
 .prettierrc.js
 CONTRIBUTING.md
