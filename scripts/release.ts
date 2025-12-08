@@ -69,19 +69,19 @@ async function release() {
     `Current version: ${chalk.cyan(packageJson.version)}, next version: ${chalk.cyan(nextVersion)}`
   );
 
-  await run($`yarn`, {
+  await run($`npm`, {
     info: 'Installing fresh dependencies',
     success: 'Fresh dependencies have been installed',
     error: 'Failed to install fresh dependencies',
   });
 
-  await run($`yarn run clean`, {
+  await run($`npm run clean`, {
     info: 'Removing dist directory',
     success: 'dist directory has been removed',
     error: 'Failed to remove dist directory',
   });
 
-  await run($`yarn run build`, {
+  await run($`npm run build`, {
     info: 'Building the package',
     success: 'The package has been built',
     error: 'Failed to build the package',
