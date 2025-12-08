@@ -69,7 +69,7 @@ async function release() {
     `Current version: ${chalk.cyan(packageJson.version)}, next version: ${chalk.cyan(nextVersion)}`
   );
 
-  await run($`npm`, {
+  await run($`npm ci`, {
     info: 'Installing fresh dependencies',
     success: 'Fresh dependencies have been installed',
     error: 'Failed to install fresh dependencies',
