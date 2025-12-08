@@ -69,5 +69,8 @@
     "version-next": "^1.0.2",
     "yargs": "^18.0.0",
     "zx": "^8.8.1"
+  },
+  "peerDependencies": {
+    "vite": "^7.2.7"
   }
 }
