@@ -1,6 +1,11 @@
 # vite-inline-css-plugin
 
-Plugin for vite that inline CSS as base64.
+Vite plugin that inlines CSS imports as base64 data URLs.
+
+## Compatibility
+
+- Vite 8
+- Vite 7.2.7 or newer
 
 ## Usage
 

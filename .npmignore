@@ -8,13 +8,10 @@
 .prettierrc.js
 CONTRIBUTING.md
 eslint.config.js
-jest.config.js
+tests
 renovate.json
 rollup.config.js
-scripts/pack-test.ts
-scripts/release.ts
-scripts/run.ts
-scripts/update-version.ts
+scripts
 src/index.ts
 tsconfig.build.json
 tsconfig.eslint.json
