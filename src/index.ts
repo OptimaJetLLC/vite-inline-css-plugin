@@ -2,8 +2,8 @@ import { readFileSync } from 'node:fs';
 import type { Plugin } from 'vite';
 
 /**
- * Vite plugin that inlines all imported CSS files as base64 data URLs.
- * This handles both static and dynamic CSS imports.
+ * Vite plugin that converts CSS `?url` imports to base64 data URLs.
+ * This handles both static and dynamic imports.
  * @returns Vite plugin
  */
 export function inlineCssPlugin(): Plugin {

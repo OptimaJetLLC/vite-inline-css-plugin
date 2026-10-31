@@ -1,10 +1,25 @@
 {
   "name": "vite-inline-css-plugin",
-  "description": "Vite plugin that inlines CSS imports as base64 data URLs",
+  "description": "Vite plugin that converts CSS ?url imports to base64 data URLs",
   "version": "0.0.1",
   "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "types": "./dist/index.d.ts",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "author": "Optimajet",
   "keywords": [
     "vite",
@@ -24,7 +39,8 @@
   "scripts": {
     "clean": "tsx scripts/clean.ts",
     "generate-dts": "tsc --project tsconfig.build.json",
-    "build": "rollup -c rollup.config.js && npm run generate-dts",
+    "build": "npm run clean && rollup -c rollup.config.js && npm run generate-dts",
+    "prepack": "npm run build",
     "pack:test": "tsx scripts/pack-test",
     "test:integration": "tsx --test tests/*.test.ts",
     "prettier:check": "prettier --check \"**/*.{ts,tsx}\"",
