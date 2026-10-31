@@ -1,7 +1,7 @@
 {
   "name": "vite-inline-css-plugin",
   "description": "Vite plugin that converts CSS ?url imports to base64 data URLs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "sideEffects": false,
   "files": [
