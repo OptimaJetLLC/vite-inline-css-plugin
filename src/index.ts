@@ -49,7 +49,10 @@ export function inlineCssPlugin(): Plugin {
         if (dataUrl) {
           // Return as ES module that exports the data URL
           // This is JavaScript, not CSS, so Vite's CSS plugin won't process it
-          return `export default ${JSON.stringify(dataUrl)}`;
+          return {
+            code: `export default ${JSON.stringify(dataUrl)}`,
+            moduleType: 'js',
+          };
         }
         this.error(`CSS file not found in cache: ${filePath}`);
       }
