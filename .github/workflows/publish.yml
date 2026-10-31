@@ -1,10 +1,19 @@
+name: CI and publish
+
 on:
   pull_request:
   push:
-    branches: main
+    branches:
+      - main
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  publish:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -13,7 +22,20 @@ jobs:
           node-version-file: '.nvmrc'
       - run: npm ci
       - run: npm test
-      - uses: JS-DevTools/npm-publish@v4
-        if: github.event_name == 'push'
+
+  publish:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          token: ${{ secrets.NPM_TOKEN }}
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
+      - run: npm ci
+      - run: npm publish --access public
